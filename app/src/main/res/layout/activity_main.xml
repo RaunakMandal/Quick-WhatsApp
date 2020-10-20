@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,93 +8,88 @@
     android:scrollbars="none"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/wp_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/logo" />
 
-            <ImageView
-                android:id="@+id/wp_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_marginTop="40dp"
-                android:src="@drawable/logo" />
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/wp_logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/open_sans"
+            android:text="Send Messages without Saving the Number"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/wp_logo"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/open_sans"
-                android:text="Send Messages without Saving the Number"
-                android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="28sp"
-                android:textStyle="bold" />
+        <EditText
+            android:id="@+id/number"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/my_style"
+            android:fontFamily="@font/open_sans"
+            android:hint="Enter Phone Number"
+            android:inputType="phone"
+            android:textAlignment="center"
+            android:textSize="24sp" />
 
-            <EditText
-                android:id="@+id/number"
-                android:layout_width="350dp"
-                android:layout_height="50dp"
-                android:layout_below="@id/text"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="35dp"
-                android:background="@drawable/my_style"
-                android:fontFamily="@font/open_sans"
-                android:hint="Enter Phone Number"
-                android:inputType="phone"
-                android:textAlignment="center"
-                android:textSize="24sp" />
+        <EditText
+            android:id="@+id/message"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/number"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/my_style"
+            android:fontFamily="@font/open_sans"
+            android:hint="Add a Message (Optional)"
+            android:inputType="textCapWords"
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/message"
-                android:layout_width="350dp"
-                android:layout_height="50dp"
-                android:layout_below="@id/number"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/my_style"
-                android:fontFamily="@font/open_sans"
-                android:hint="Add a Message (Optional)"
-                android:inputType="textCapWords"
-                android:textAlignment="center"
-                android:textSize="18sp" />
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/message"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_style"
+            android:fontFamily="@font/open_sans"
+            android:onClick="send"
+            android:text="Send"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/sendButton"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_below="@id/message"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/button_style"
-                android:fontFamily="@font/open_sans"
-                android:onClick="send"
-                android:text="Send"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textColor="@android:color/white"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/open_sans"
+            android:text="Made with ❤️ by Raunak Mandal"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/open_sans"
-                android:text="Made with ❤️ by Raunak Mandal"
-                android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
-        </RelativeLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
 </ScrollView>
