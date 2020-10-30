@@ -33,25 +33,43 @@
             android:textSize="28sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/number"
+        <LinearLayout
+            android:id="@+id/num"
+            android:layout_height="wrap_content"
             android:layout_width="350dp"
-            android:layout_height="50dp"
+            android:layout_marginTop="35dp"
             android:layout_below="@id/text"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/my_style"
-            android:fontFamily="@font/open_sans"
-            android:hint="Enter Phone Number"
-            android:inputType="phone"
-            android:textAlignment="center"
-            android:textSize="24sp" />
+            android:weightSum="10">
+
+            <Spinner
+                android:id="@+id/country"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="2"
+                android:background="@drawable/my_style"
+                android:fontFamily="@font/open_sans"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/number"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="8"
+                android:background="@drawable/my_style"
+                android:fontFamily="@font/open_sans"
+                android:hint="Enter Phone Number"
+                android:inputType="phone"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+        </LinearLayout>
 
         <EditText
             android:id="@+id/message"
             android:layout_width="350dp"
             android:layout_height="50dp"
-            android:layout_below="@id/number"
+            android:layout_below="@id/num"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:background="@drawable/my_style"
