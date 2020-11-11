@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -13,51 +12,46 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
     String countryCode = "";
 
-    ArrayList<String> countryName = new ArrayList<String>(
-            Arrays.asList("\uD83C\uDDEE\uD83C\uDDF3 +91", "\uD83C\uDDFA\uD83C\uDDF8 +1", "\uD83C\uDDEC\uD83C\uDDE7 +44", "\uD83C\uDDE9\uD83C\uDDEA +49", "\uD83C\uDDE6\uD83C\uDDFA +61"));
+    private ArrayList<CountryItem> countryName;
+    private CountryAdapter countryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Spinner countryList = (Spinner) findViewById(R.id.country);
-        countryList.setOnItemSelectedListener(this);
+        initList();
 
-        ArrayAdapter<String> spinnerAdap = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, countryName);
-        spinnerAdap.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner countriesList = findViewById(R.id.country);
+        countryAdapter = new CountryAdapter(this, countryName);
+        countriesList.setAdapter(countryAdapter);
 
-        countryList.setAdapter(spinnerAdap);
+        countriesList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                CountryItem clickedItem = (CountryItem) parent.getItemAtPosition(position);
+                countryCode = clickedItem.getCountryName();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        setCode(position);
-    }
+    private void initList() {
+        countryName = new ArrayList<>();
+        countryName.add(new CountryItem("+91", R.drawable.india));
+        countryName.add(new CountryItem("+880", R.drawable.bd));
+        countryName.add(new CountryItem("+1", R.drawable.us));
+        countryName.add(new CountryItem("+44", R.drawable.uk));
+        countryName.add(new CountryItem("+971", R.drawable.uae));
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        countryCode = "91";
-    }
-
-    public void setCode(int id) {
-        if (id == 0) {
-            countryCode = "91";
-        } else if (id == 1) {
-            countryCode = "1";
-        } else if (id == 2) {
-            countryCode = "44";
-        } else if (id == 3) {
-            countryCode = "49";
-        } else if (id == 4) {
-            countryCode = "61";
-        }
     }
 
     public void send(View view) {
@@ -75,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent sendM = new Intent(Intent.ACTION_VIEW);
         sendM.setData(Uri.parse(url));
         if (sendM.resolveActivity(getPackageManager()) != null) {
+            sendM.setPackage("com.whatsapp");
             startActivity(sendM);
         }
     }
