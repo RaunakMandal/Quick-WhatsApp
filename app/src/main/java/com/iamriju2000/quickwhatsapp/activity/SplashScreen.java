@@ -1,10 +1,12 @@
-package com.iamriju2000.quickwhatsapp;
+package com.iamriju2000.quickwhatsapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.iamriju2000.quickwhatsapp.R;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -20,6 +22,6 @@ public class SplashScreen extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        }, 1000);
+        }, 2500);
     }
 }

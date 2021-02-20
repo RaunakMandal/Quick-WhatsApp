@@ -1,8 +1,11 @@
-package com.iamriju2000.quickwhatsapp;
+package com.iamriju2000.quickwhatsapp.activity;
+
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -10,6 +13,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.iamriju2000.quickwhatsapp.adapter.CountryAdapter;
+import com.iamriju2000.quickwhatsapp.util.CountryItem;
+import com.iamriju2000.quickwhatsapp.R;
 
 import java.util.ArrayList;
 
@@ -72,5 +79,33 @@ public class MainActivity extends AppCompatActivity {
             sendM.setPackage("com.whatsapp");
             startActivity(sendM);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Uri report_uri = Uri.parse("https://forms.gle/Nh9cAW3q44mZRngX7");
+        Uri download_uri = Uri.parse("https://github.com/RaunakMandal/Quick-WhatsApp/releases/");
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.about:
+                startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                return true;
+            case R.id.bug:
+                startActivity(new Intent(Intent.ACTION_VIEW, report_uri));
+                return true;
+            case R.id.download:
+                startActivity(new Intent(Intent.ACTION_VIEW, download_uri));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 }

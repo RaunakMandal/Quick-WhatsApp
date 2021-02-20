@@ -1,4 +1,4 @@
-package com.iamriju2000.quickwhatsapp;
+package com.iamriju2000.quickwhatsapp.util;
 
 public class CountryItem {
     private final String countryName;

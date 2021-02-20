@@ -6,7 +6,7 @@
     android:background="@drawable/bg"
     android:fillViewport="true"
     android:scrollbars="none"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/open_sans"
-            android:text="Send Messages without Saving the Number"
+            android:text="@string/tagline"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="28sp"
@@ -35,11 +35,11 @@
 
         <LinearLayout
             android:id="@+id/num"
-            android:layout_height="wrap_content"
             android:layout_width="350dp"
-            android:layout_marginTop="35dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/text"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="35dp"
             android:weightSum="10">
 
             <Spinner
@@ -48,8 +48,7 @@
                 android:layout_height="50dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="2"
-                android:background="@drawable/my_style"
-                />
+                android:background="@drawable/my_style" />
 
             <EditText
                 android:id="@+id/number"
@@ -58,7 +57,7 @@
                 android:layout_weight="8"
                 android:background="@drawable/my_style"
                 android:fontFamily="@font/open_sans"
-                android:hint="Enter Phone Number"
+                android:hint="@string/number"
                 android:inputType="phone"
                 android:textAlignment="center"
                 android:textSize="24sp" />
@@ -73,7 +72,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/my_style"
             android:fontFamily="@font/open_sans"
-            android:hint="Add a Message (Optional)"
+            android:hint="@string/add_msg"
             android:inputType="textCapWords"
             android:textAlignment="center"
             android:textSize="18sp" />
@@ -88,7 +87,7 @@
             android:background="@drawable/button_style"
             android:fontFamily="@font/open_sans"
             android:onClick="send"
-            android:text="Send"
+            android:text="@string/send"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
@@ -102,7 +101,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/open_sans"
-            android:text="Made with ❤️ by Raunak Mandal"
+            android:text="@string/made_by"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="18sp" />

@@ -1,4 +1,4 @@
-package com.iamriju2000.quickwhatsapp;
+package com.iamriju2000.quickwhatsapp.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.iamriju2000.quickwhatsapp.util.CountryItem;
+import com.iamriju2000.quickwhatsapp.R;
 
 import java.util.ArrayList;
 
