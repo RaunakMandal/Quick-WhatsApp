@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Uri report_uri = Uri.parse("https://forms.gle/Nh9cAW3q44mZRngX7");
         Uri download_uri = Uri.parse("https://github.com/RaunakMandal/Quick-WhatsApp/releases/");
+        Uri git_repo = Uri.parse("https://github.com/RaunakMandal/Quick-WhatsApp");
         int id = item.getItemId();
 
         switch (id) {
@@ -103,9 +104,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.download:
                 startActivity(new Intent(Intent.ACTION_VIEW, download_uri));
                 return true;
+            case R.id.repo:
+                startActivity(new Intent(Intent.ACTION_VIEW, git_repo));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
 }

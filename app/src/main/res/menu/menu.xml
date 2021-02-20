@@ -9,4 +9,7 @@
     <item
         android:id="@+id/download"
         android:title="Download Latest Version" />
+    <item
+        android:id="@+id/repo"
+        android:title="Git Repo" />
 </menu>

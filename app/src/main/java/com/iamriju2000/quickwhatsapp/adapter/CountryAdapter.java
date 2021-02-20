@@ -8,9 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import com.iamriju2000.quickwhatsapp.util.CountryItem;
 import com.iamriju2000.quickwhatsapp.R;
 
@@ -20,15 +17,13 @@ public class CountryAdapter extends ArrayAdapter<CountryItem> {
     public CountryAdapter(Context context, ArrayList<CountryItem> countryList) {
         super(context, 0, countryList);
     }
-
-    @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         return initView(position, convertView, parent);
     }
 
     @Override
-    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getDropDownView(int position, View convertView, ViewGroup parent) {
         return initView(position, convertView, parent);
     }
 

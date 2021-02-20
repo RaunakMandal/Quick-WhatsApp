@@ -7,6 +7,7 @@
     <string name="made_by">Made with ❤️ by Raunak Mandal</string>
 
     <string name="abt">About</string>
+    <string name="version">Version: v1.3</string>
     <string name="about">This App allows you to Send Messages to Unknown Numbers on WhatsApp to help those who are lazy enough not to Save the Number in Contacts</string>
     <string name="cp_txt">©2020-21 Raunak Mandal</string>
     <string name="opensrc">Open-Source Libraries used</string>
