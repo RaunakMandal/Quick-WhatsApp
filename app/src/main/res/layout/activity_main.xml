@@ -1,111 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:fillViewport="true"
+    android:orientation="vertical"
     android:scrollbars="none"
     tools:context=".activity.MainActivity">
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/wp_logo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/logo" />
 
-        <ImageView
-            android:id="@+id/wp_logo"
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/open_sans"
+        android:text="@string/tagline"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/my_style"
+        android:orientation="horizontal">
+
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/countryCodePicker"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_marginTop="40dp"
-            android:src="@drawable/logo" />
-
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/wp_logo"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/open_sans"
-            android:text="@string/tagline"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:id="@+id/num"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/text"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="35dp"
-            android:weightSum="10">
-
-            <Spinner
-                android:id="@+id/country"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="2"
-                android:background="@drawable/my_style" />
-
-            <EditText
-                android:id="@+id/number"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="8"
-                android:background="@drawable/my_style"
-                android:fontFamily="@font/open_sans"
-                android:hint="@string/number"
-                android:inputType="phone"
-                android:textAlignment="center"
-                android:textSize="24sp" />
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:gravity="center_vertical" />
 
         <EditText
-            android:id="@+id/message"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/num"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/my_style"
+            android:id="@+id/phoneNumber"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_weight="7"
+            android:background="@null"
             android:fontFamily="@font/open_sans"
-            android:hint="@string/add_msg"
-            android:inputType="textCapWords"
-            android:textAlignment="center"
-            android:textSize="18sp" />
+            android:hint="@string/number"
+            android:inputType="phone"
+            android:textAlignment="viewStart"
+            android:textSize="22sp" />
+    </LinearLayout>
 
-        <Button
-            android:id="@+id/sendButton"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/message"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/button_style"
-            android:fontFamily="@font/open_sans"
-            android:onClick="send"
-            android:text="@string/send"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/white"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+    <EditText
+        android:id="@+id/textMessage"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/my_style"
+        android:fontFamily="@font/open_sans"
+        android:hint="@string/add_msg"
+        android:inputType="textCapWords"
+        android:textAlignment="center"
+        android:textSize="18sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/open_sans"
-            android:text="@string/made_by"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
+    <Button
+        android:id="@+id/sendButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_style"
+        android:fontFamily="@font/open_sans"
+        android:text="@string/send"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
-    </RelativeLayout>
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="top|center_horizontal"-->
+    <!--            android:layout_marginBottom="20dp"-->
+    <!--            android:fontFamily="@font/open_sans"-->
+    <!--            android:text="@string/made_by"-->
+    <!--            android:textAlignment="center"-->
+    <!--            android:textColor="@android:color/black"-->
+    <!--            android:textSize="16sp" />-->
 
-</ScrollView>
+</LinearLayout>

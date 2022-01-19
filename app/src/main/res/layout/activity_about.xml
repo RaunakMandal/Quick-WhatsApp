@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".activity.AboutActivity">
 
     <TextView
         android:id="@+id/tv_about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="48dp"
         android:fontFamily="@font/open_sans"
         android:text="@string/app_name"
         android:textAlignment="center"
@@ -20,52 +21,35 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_below="@id/tv_about"
         android:layout_centerHorizontal="true"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_icon_svg" />
+        android:src="@drawable/app_logo" />
 
     <TextView
-        android:fontFamily="@font/open_sans"
         android:id="@+id/v_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/logo"
-        android:text="@string/version"/>
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/open_sans"
+        android:text="@string/version" />
 
     <TextView
         android:id="@+id/abt_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/v_code"
-        android:layout_margin="6dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="12dp"
         android:fontFamily="@font/open_sans"
         android:text="@string/about"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/oos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/abt_txt"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="@string/opensrc"
-        android:textColor="@android:color/black"
-        android:textSize="22sp"
-        android:textStyle="bold" />
-
-    <ListView
-        android:id="@+id/lv_abt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/cp_text"
-        android:layout_below="@id/oos" />
 
     <TextView
         android:id="@+id/cp_text"
