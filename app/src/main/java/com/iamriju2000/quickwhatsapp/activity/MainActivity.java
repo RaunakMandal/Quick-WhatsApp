@@ -4,6 +4,7 @@ package com.iamriju2000.quickwhatsapp.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -25,7 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.hbb20.CountryCodePicker;
 import com.iamriju2000.quickwhatsapp.R;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
     private Button sendButton;
     private EditText phoneNumber, textMessage;
     private CountryCodePicker countryCodePicker;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         countryCodePicker = findViewById(R.id.countryCodePicker);
         countryCodePicker.showCloseIcon(true);
         countryCode = countryCodePicker.getDefaultCountryCodeWithPlus();
+        countryCodePicker.showFlag(false);
         countryCodePicker.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
             @Override
             public void onCountrySelected() {
@@ -117,15 +119,5 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        Log.d("QWP", adapterView.getItemAtPosition(i).toString());
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 }

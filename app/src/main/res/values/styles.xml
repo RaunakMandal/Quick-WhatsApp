@@ -7,5 +7,5 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppThemeSplash" parent="Theme.AppCompat.Light.NoActionBar"></style>
+    <style name="AppThemeSplash" parent="Theme.AppCompat.Light.NoActionBar" />
 </resources>
