@@ -4,6 +4,7 @@ package com.iamriju2000.quickwhatsapp.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText phoneNumber, textMessage;
     private CountryCodePicker countryCodePicker;
     private String countryCode = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,15 +71,18 @@ public class MainActivity extends AppCompatActivity {
         if (phone.length() <= 0 || phone.isEmpty()) {
             Toast.makeText(MainActivity.this, "Phone number is not valid", Toast.LENGTH_SHORT).show();
         } else {
-            Log.d("QWP",  "Code " + countryCode + " Phone " + phone);
+            Log.d("QWP", "Code " + countryCode + " Phone " + phone);
             String messageText = textMessage.getText().toString();
             final String url = "whatsapp://send?phone=+" + countryCode + phone + "&text=" + messageText;
+//            final String url = "https://api.whatsapp.com/send?phone=+" + countryCode + phone + "&text=" + messageText;
+
             Intent messageIntent = new Intent(Intent.ACTION_VIEW);
             messageIntent.setData(Uri.parse(url));
-            if (messageIntent.resolveActivity(getPackageManager()) != null) {
+
+            try {
                 messageIntent.setPackage("com.whatsapp");
                 startActivity(messageIntent);
-            } else {
+            } catch (Exception e) {
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle(R.string.wp_not_installed)
                         .setMessage(R.string.download_play_store)
