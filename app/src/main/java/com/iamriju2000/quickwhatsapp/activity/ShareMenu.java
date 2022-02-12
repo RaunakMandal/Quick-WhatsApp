@@ -21,20 +21,29 @@ public class ShareMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String phoneNo = getIntent().getStringExtra(Intent.EXTRA_TEXT);
+        phoneNo = phoneNo.replaceAll("\\s", "");
+//        phoneNo = phoneNo.replaceAll("-", "");
         Log.d("QWP", "Ph: "+ phoneNo);
-        String regex = "[0-9]+";
-
-        Pattern p = Pattern.compile(regex);
         if (phoneNo == null) {
             Toast.makeText(this, "Invalid Phone Number!", Toast.LENGTH_SHORT).show();
             finish();
         }
+
+        String regex = "^[\\d\\(\\)\\-+]+$";
+
+        String countryCode = "";
+        if(!phoneNo.startsWith("+") && phoneNo.length() == 10) {
+            countryCode = "+91";
+        }
+
+        Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(phoneNo);
         if(!m.matches()) {
             Toast.makeText(this, "Invalid Phone Number!", Toast.LENGTH_SHORT).show();
-            finishAffinity();
+            Log.d("QWP", String.valueOf(m.matches()));
+            finish();
         } else {
-            final String url = "whatsapp://send?phone=+91" + phoneNo;
+            final String url = "whatsapp://send?phone=" + countryCode + phoneNo;
 //            final String url = "https://api.whatsapp.com/send?phone=+" + countryCode + phone + "&text=" + messageText;
 
             Intent messageIntent = new Intent(Intent.ACTION_VIEW);
