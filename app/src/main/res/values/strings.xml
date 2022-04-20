@@ -2,7 +2,7 @@
     <string name="app_name">Quick WhatsApp</string>
     <string name="tagline">Send Messages without Saving the Number</string>
     <string name="number">Enter Phone Number</string>
-    <string name="add_msg">Add a Message (Optional)</string>
+    <string name="add_msg">Type a Message or Press the Button</string>
     <string name="send">Send</string>
     <string name="made_by">Made with ❤️ by Raunak Mandal</string>
 

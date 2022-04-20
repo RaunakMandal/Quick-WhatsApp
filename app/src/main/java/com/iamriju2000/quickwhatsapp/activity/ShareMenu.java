@@ -16,14 +16,29 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ShareMenu extends AppCompatActivity {
+    private String phoneNo = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String phoneNo = getIntent().getStringExtra(Intent.EXTRA_TEXT);
-        phoneNo = phoneNo.replaceAll("\\s", "");
+        String phone = getIntent().getStringExtra(Intent.EXTRA_TEXT);
+        CharSequence text = "";
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            text = getIntent()
+                    .getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT);
+        } else {
+            Toast.makeText(this, "Available for Android M and above!", Toast.LENGTH_SHORT).show();
+            finishAffinity();
+        }
+        if (phone == null) {
+            phoneNo = text.toString();
+        } else {
+            phoneNo = phone;
+        }
+        Log.d("QWP", phoneNo + " " + text.toString());
+//        phoneNo = phoneNo.replaceAll("\\s", "");
 //        phoneNo = phoneNo.replaceAll("-", "");
-        Log.d("QWP", "Ph: "+ phoneNo);
+        Log.d("QWP", "Ph: " + phoneNo);
         if (phoneNo == null) {
             Toast.makeText(this, "Invalid Phone Number!", Toast.LENGTH_SHORT).show();
             finish();
@@ -32,13 +47,13 @@ public class ShareMenu extends AppCompatActivity {
         String regex = "^[\\d\\(\\)\\-+]+$";
 
         String countryCode = "";
-        if(!phoneNo.startsWith("+") && phoneNo.length() == 10) {
+        if (!phoneNo.startsWith("+") && phoneNo.length() == 10) {
             countryCode = "+91";
         }
 
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(phoneNo);
-        if(!m.matches()) {
+        if (!m.matches()) {
             Toast.makeText(this, "Invalid Phone Number!", Toast.LENGTH_SHORT).show();
             Log.d("QWP", String.valueOf(m.matches()));
             finish();

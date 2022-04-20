@@ -27,11 +27,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.hbb20.CountryCodePicker;
 import com.iamriju2000.quickwhatsapp.R;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 public class MainActivity extends AppCompatActivity {
-    private Button sendButton;
+    private Button sendButton, reloadButton;
     private EditText phoneNumber, textMessage;
     private CountryCodePicker countryCodePicker;
     private String countryCode = "";
+
+    private ArrayList<String> messageArrayList = new ArrayList<>(
+            Arrays.asList(
+                    "Hi \uD83D\uDC4B", "Hello 🤘", "Hola! 🙌", "Nomoskar! 🙏", "Good Morning ☀️", "Good Night 🌚", "How are you? 💌", "Can I talk to you a bit? 😊"
+            ));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +63,18 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("QWP", "On Picker Change: " + countryCodePicker.getSelectedCountryCodeWithPlus());
             }
         });
+        textMessage = findViewById(R.id.textMessage);
+        reloadButton = findViewById(R.id.reloadButton);
+        reloadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("QWP", "Reload");
+                Collections.shuffle(messageArrayList);
+                textMessage.setText(messageArrayList.get(0));
+            }
+        });
 
         phoneNumber = findViewById(R.id.phoneNumber);
-        textMessage = findViewById(R.id.textMessage);
         sendButton = findViewById(R.id.sendButton);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
