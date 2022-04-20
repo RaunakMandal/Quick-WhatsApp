@@ -18,7 +18,7 @@
                 <action android:name="android.intent.action.PROCESS_TEXT" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="text/" />
+                <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
         <activity
