@@ -30,35 +30,44 @@ public class ShareMenu extends AppCompatActivity {
             Toast.makeText(this, "Available for Android M and above!", Toast.LENGTH_SHORT).show();
             finishAffinity();
         }
-        if (phone == null) {
+        if (text != null) {
             phoneNo = text.toString();
-        } else {
+        } else if (phone != null) {
             phoneNo = phone;
+        } else {
+            Toast.makeText(this, "Failed to parse number!", Toast.LENGTH_SHORT).show();
+            finishAffinity();
         }
-        Log.d("QWP", phoneNo + " " + text.toString());
-//        phoneNo = phoneNo.replaceAll("\\s", "");
-//        phoneNo = phoneNo.replaceAll("-", "");
+
+        phoneNo = phoneNo.replaceAll("\\D+", "");
         Log.d("QWP", "Ph: " + phoneNo);
-        if (phoneNo == null) {
+        if (phoneNo == null || phoneNo.isEmpty()) {
             Toast.makeText(this, "Invalid Phone Number!", Toast.LENGTH_SHORT).show();
-            finish();
-        }
-
-        String regex = "^[\\d\\(\\)\\-+]+$";
-
-        String countryCode = "";
-        if (!phoneNo.startsWith("+") && phoneNo.length() == 10) {
-            countryCode = "+91";
-        }
-
-        Pattern p = Pattern.compile(regex);
-        Matcher m = p.matcher(phoneNo);
-        if (!m.matches()) {
-            Toast.makeText(this, "Invalid Phone Number!", Toast.LENGTH_SHORT).show();
-            Log.d("QWP", String.valueOf(m.matches()));
             finish();
         } else {
-            final String url = "whatsapp://send?phone=" + countryCode + phoneNo;
+
+//        String regex = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$";
+
+            String countryCode = "";
+            String finalNumber = "";
+            if (!phoneNo.startsWith("+") && phoneNo.length() == 10) {
+                countryCode = "+91";
+                finalNumber += phoneNo;
+            } else {
+                Log.d("QWP", "comes");
+                finalNumber += "+" + phoneNo;
+            }
+            Log.d("QWP", finalNumber);
+
+//        Pattern p = Pattern.compile(regex);
+//        Matcher m = p.matcher(finalNumber);
+//        Log.d("QWP", String.valueOf(m));
+//        if (!m.matches()) {
+//            Log.d("QWP", "not match");
+//            Toast.makeText(this, "Invalid Phone Number!", Toast.LENGTH_SHORT).show();
+//            finish();
+//        } else {
+            final String url = "whatsapp://send?phone=" + countryCode + finalNumber;
 //            final String url = "https://api.whatsapp.com/send?phone=+" + countryCode + phone + "&text=" + messageText;
 
             Intent messageIntent = new Intent(Intent.ACTION_VIEW);
@@ -68,17 +77,7 @@ public class ShareMenu extends AppCompatActivity {
                 messageIntent.setPackage("com.whatsapp");
                 startActivity(messageIntent);
             } catch (Exception e) {
-                new AlertDialog.Builder(ShareMenu.this)
-                        .setTitle(R.string.wp_not_installed)
-                        .setMessage(R.string.download_play_store)
-                        .setPositiveButton(R.string.download, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.whatsapp")));
-                            }
-                        })
-                        .setNegativeButton(android.R.string.no, null)
-                        .setIcon(R.drawable.logo)
-                        .show();
+                Toast.makeText(this, "You do not have WhatsApp installed!", Toast.LENGTH_SHORT).show();
                 Log.d("QWP", "Couldn't find WhatsApp");
             }
             finish();
